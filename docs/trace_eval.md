@@ -1,8 +1,8 @@
 # 📊 BÁO CÁO THU HOẠCH NGHIỆM THU BÀI LAB 3 (BƯỚC 3 — SUBMISSION ARTIFACT)
 
-> **Họ và Tên Học viên:** [Điền Họ và Tên]  
-> **Mã Sinh Viên / Mã Học viên:** [Điền MSSV]  
-> **Chủ đề Lựa chọn:** [Điền tên chủ đề đã chọn từ docs/DANH_SACH_DE_TAI.md hoặc Đề tài Mở]  
+> **Họ và Tên Học viên:** [Trương Thị Lan Anh]  
+> **Mã Sinh Viên / Mã Học viên:** [2A202602451]  
+> **Chủ đề Lựa chọn:** [Trợ lý Tư vấn Sức khỏe Vinmec]  
 
 ---
 

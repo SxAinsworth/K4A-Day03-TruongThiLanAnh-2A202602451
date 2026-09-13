@@ -1,0 +1,37 @@
+[
+  {
+    "id": "TC01",
+    "type": "direct_query",
+    "question": "Chào bạn, bạn có thể giới thiệu quy chế học vụ cơ bản của Đại học VinUni không?",
+    "expected_behavior": "Chatbot trả lời trực tiếp từ System Prompt, không cần gọi bất kỳ Tool nào.",
+    "complexity": "Low"
+  },
+  {
+    "id": "TC02",
+    "type": "single_tool_query",
+    "question": "Hãy tra cứu thông tin học vụ của sinh viên SV2026001.",
+    "expected_behavior": "Agent nhận diện nhu cầu tra cứu, tự động phát sinh Tool Call 'academic_query' với mã SV2026001.",
+    "complexity": "Medium"
+  },
+{
+  "id": "TC03",
+  "type": "appointment_booking",
+  "question": "Hãy đặt lịch khám cho Trương Thị Lan Anh với bác sĩ có mã D001 vào lúc 15:30 ngày 14/09/2026.",
+  "expected_behavior": "Agent nhận diện đầy đủ thông tin đặt lịch và sử dụng Tool 'book_appointment' với doctor_id D001, date 2026-09-14, time 15:30 và patient_name Trương Thị Lan Anh. Agent trả về kết quả đặt lịch dựa trên Observation từ Tool.",
+  "complexity": "Medium"
+},
+{
+  "id": "TC04",
+  "type": "multi_step_reasoning",
+  "question": "Tôi muốn khám Tim mạch vào lúc 14:00 ngày 14/09/2026, bác sĩ nào cũng được. Hãy tìm bác sĩ phù hợp và đặt lịch cho Trương Thị Lan Anh.",
+  "expected_behavior": "Agent thực hiện chuỗi ReAct đa bước: gọi 'search_doctors' để tìm bác sĩ chuyên khoa Tim mạch, gọi 'get_doctor_schedule' để kiểm tra lịch của bác sĩ phù hợp, sau đó gọi 'book_appointment' khi xác nhận khung giờ 14:00 còn trống. Agent phải sử dụng kết quả Observation của từng bước để quyết định bước tiếp theo.",
+  "complexity": "High"
+},
+{
+  "id": "TC05",
+  "type": "edge_case_handling",
+  "question": "Tôi muốn tìm bác sĩ chuyên khoa Nội tiết tại Vinmec để khám ngày 14/09/2026.",
+  "expected_behavior": "Agent gọi Tool 'search_doctors' với specialty Nội tiết. Khi Tool trả về trạng thái NOT_FOUND, Agent phải thông báo không tìm thấy bác sĩ phù hợp trong dữ liệu hiện có và không được tự bịa tên bác sĩ, lịch khám hoặc thực hiện đặt lịch.",
+  "complexity": "Medium"
+}
+]
