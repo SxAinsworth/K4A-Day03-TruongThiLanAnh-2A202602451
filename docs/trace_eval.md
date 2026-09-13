@@ -8,13 +8,15 @@
 
 ## 1. BẢNG CHẤM ĐIỂM AGENTIC FIT SCORING MATRIX (ĐÁNH GIÁ CHỦ ĐỀ)
 
+## 1. BẢNG CHẤM ĐIỂM AGENTIC FIT SCORING MATRIX (ĐÁNH GIÁ CHỦ ĐỀ)
+
 | Tiêu chí Đánh giá | Mức độ (1 - 5) | Giải trình chi tiết lý do chọn điểm |
 | :--- | :---: | :--- |
-| **1. Multi-step Reasoning** | / 5 | Bài toán có yêu cầu chia nhỏ nhiều bước suy luận nối tiếp nhau không? |
-| **2. Tool Interaction** | / 5 | Hệ thống có cần kết nối với MCP Server / Cơ sở dữ liệu bên ngoài không? |
-| **3. Dynamic Decision** | / 5 | Bước tiếp theo có phụ thuộc vào kết quả quan sát bước trước không? |
-| **4. Long Horizon Goal** | / 5 | Hệ thống có phải giữ mục tiêu xuyên suốt qua nhiều lượt xử lý không? |
-| **TỔNG ĐIỂM AGENTIC FIT** | **/ 20** | *Nếu tổng điểm > 12/20: Bài toán rất phù hợp triển khai Agentic System.* |
+| **1. Multi-step Reasoning** | **4 / 5** | Bài toán yêu cầu nhiều bước xử lý nối tiếp: xác định chuyên khoa → tìm bác sĩ → kiểm tra lịch còn trống → lựa chọn khung giờ phù hợp → đặt lịch. Tuy nhiên, chuỗi xử lý tương đối ngắn và các bước nghiệp vụ chưa có quá nhiều nhánh suy luận phức tạp. |
+| **2. Tool Interaction** | **5 / 5** | Đây là thành phần cốt lõi của bài toán. Agent cần sử dụng các Tool thông qua MCP Server để tìm bác sĩ (`search_doctors`), kiểm tra lịch (`get_doctor_schedule`) và đặt lịch (`book_appointment`). Các thông tin về bác sĩ và lịch khám không nên được LLM tự sinh mà phải lấy từ Tool. |
+| **3. Dynamic Decision** | **4 / 5** | Hành động tiếp theo phụ thuộc vào Observation của Tool trước đó. Ví dụ, sau khi tìm được bác sĩ, Agent mới có thể kiểm tra lịch; nếu khung giờ yêu cầu còn trống thì mới đặt lịch, còn nếu không có bác sĩ hoặc không có lịch thì Agent phải dừng hoặc đưa ra phương án khác. Tuy nhiên, số lượng nhánh quyết định hiện tại vẫn còn tương đối giới hạn. |
+| **4. Long Horizon Goal** | **3 / 5** | Agent cần giữ mục tiêu cuối cùng là hoàn thành việc đặt lịch và duy trì một số thông tin như chuyên khoa, bác sĩ, ngày khám, giờ khám và tên bệnh nhân qua nhiều bước ReAct. Tuy nhiên, một phiên đặt lịch thường chỉ diễn ra trong vài bước và chưa phải bài toán dài hạn gồm nhiều tác vụ kéo dài hoặc nhiều mục tiêu phụ. |
+| **TỔNG ĐIỂM AGENTIC FIT** | **16 / 20** | **Bài toán phù hợp để triển khai Agentic System vì yêu cầu phối hợp nhiều Tool, xử lý theo chuỗi nhiều bước và lựa chọn hành động dựa trên Observation. Tuy nhiên, workflow hiện tại tương đối ngắn và mức độ suy luận/ra quyết định chưa quá phức tạp.** |
 
 ---
 
